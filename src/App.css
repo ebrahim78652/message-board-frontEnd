@@ -1,0 +1,51 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+:root{
+  font-size: 10px;
+}
+
+h1{
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+  font-size: 3rem;
+}
+
+.buttons{
+  display: flex;
+  gap: 2rem;
+  margin-top: 1rem;
+  
+}
+
+.new, .buttons *{
+  background-color: rgba(0, 128, 0, 0.301);
+  
+  border: 1px solid rgba(0, 0, 0, 0.384) ;
+  border-radius: 1rem;
+  padding: 0.5rem;
+}
+.new{
+  width: 10vw;
+  margin-left: 3rem;
+}
+
+
+/*CONTAINER */
+.container{
+  display: flex;
+  justify-content: center;
+  
+}
+
+/*CARD  */
+.card{
+  width: clamp(400px, 20vw, 500px) ;
+  font-size: 1.5rem ;
+  padding: 2rem;
+  border: 1px solid rgba(0, 0, 0, 0.384) ;
+  border-radius: 2rem;
+}
