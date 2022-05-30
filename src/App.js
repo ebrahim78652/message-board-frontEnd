@@ -10,21 +10,13 @@ import React from "react";
 function App() {
   const [arrCards, deleteAPost, updateAPost, addNewPost] = useCards();
 
-  /* ----------------------------------------------- */
-
-  const [isNewMessage, textArea, onTextAreaChange, toggleisNewMessage] =
-    useAddNewTextArea("", true);
-
-  const onSaveButtonClicked = () => {
-    console.log("On save button clicked");
-    toggleisNewMessage();
-    //below method coming from useAddNewTextArea()
-    console.log(textArea);
-    //below method coming from useCards()
-    addNewPost(textArea);
-  };
-
-  /* ------------------------------------------------- */
+  const [
+    isNewMessage,
+    textArea,
+    onTextAreaChange,
+    toggleisNewMessage,
+    onSaveButtonClicked,
+  ] = useAddNewTextArea("", true);
 
   return (
     <div className="App">
@@ -40,7 +32,11 @@ function App() {
         newMessageTextArea={{
           textArea,
           onTextAreaChange,
-          onSaveButtonClicked,
+          onButtonClicked: () => {
+            onSaveButtonClicked(() => {
+              addNewPost(textArea);
+            });
+          },
         }}
       />
     </div>

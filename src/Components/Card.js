@@ -8,14 +8,18 @@ import { TextArea } from "./textArea";
 import { useAddNewTextArea } from "../Hooks/useAddNewTextArea";
 
 export const Card = ({ text, httpMethods }) => {
-  const [isNewMessage, textArea, onTextAreaChange, toggleisNewMessage] =
-    useAddNewTextArea(text);
+  const [
+    isNewMessage,
+    textArea,
+    onTextAreaChange,
+    toggleisNewMessage,
+    onSaveButtonClicked,
+  ] = useAddNewTextArea(text);
 
-  const onSaveButtonClicked = () => {
-    console.log("On save button clicked");
-    toggleisNewMessage();
-    httpMethods.updateAPost(httpMethods.getId(), textArea);
-    console.log(textArea);
+  const onButtonClicked = () => {
+    onSaveButtonClicked(() => {
+      httpMethods.updateAPost(httpMethods.getId(), textArea);
+    });
   };
 
   return (
@@ -36,7 +40,7 @@ export const Card = ({ text, httpMethods }) => {
         <TextArea
           onTextAreaChange={onTextAreaChange}
           textArea={textArea}
-          onSaveButtonClicked={onSaveButtonClicked}
+          onSaveButtonClicked={onButtonClicked}
         />
       )}
     </>

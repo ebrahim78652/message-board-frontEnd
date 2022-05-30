@@ -13,7 +13,9 @@ export function ContainerCards({
         <TextArea
           textArea={newMessageTextArea.textArea}
           onTextAreaChange={newMessageTextArea.onTextAreaChange}
-          onSaveButtonClicked={newMessageTextArea.onSaveButtonClicked}
+          /* ------------------------------------------------- */
+          onSaveButtonClicked={newMessageTextArea.onButtonClicked}
+          /* ------------------------------------------------- */
         />
       )}
       {arrCards.map((element, index) => (

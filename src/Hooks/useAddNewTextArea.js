@@ -20,6 +20,7 @@ export const useAddNewTextArea = (
     setTextArea(event.target.value);
   };
 
+  /* basically we want to run this function with a callback as an argument when the button is clicked. */
   const onSaveButtonClicked = (cb) => {
     console.log("On save button clicked");
     toggleisNewMessage();
