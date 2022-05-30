@@ -13,7 +13,7 @@ function App() {
   /* ----------------------------------------------- */
 
   const [isNewMessage, textArea, onTextAreaChange, toggleisNewMessage] =
-    useAddNewTextArea();
+    useAddNewTextArea("", true);
 
   const onSaveButtonClicked = () => {
     console.log("On save button clicked");

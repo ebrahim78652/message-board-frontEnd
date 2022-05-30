@@ -1,28 +1,38 @@
 import { useState, useEffect } from "react";
 
-export const useAddNewTextArea = () => {
+export const useAddNewTextArea = (
+  defaultText,
+  eraseTextAfterToggle = false
+) => {
   const [isNewMessage, setIsNewMessage] = useState(false);
+  const [textArea, setTextArea] = useState(defaultText || "");
 
   const toggleisNewMessage = () => {
     setIsNewMessage((prevIsNewMessage) => !prevIsNewMessage);
-  };
 
-  const [textArea, setTextArea] = useState("");
+    if (eraseTextAfterToggle) {
+      setTextArea("");
+    }
+  };
 
   const onTextAreaChange = (event) => {
     console.log(event.target.value);
     setTextArea(event.target.value);
   };
 
-  //implement this method in the app.js now
-  //and delete it after implementation
-  const onSaveButtonClicked = () => {
+  const onSaveButtonClicked = (cb) => {
     console.log("On save button clicked");
     toggleisNewMessage();
+    //below method coming from useAddNewTextArea()
     console.log(textArea);
-    //add the method to do the actual post!
-    //parametrise the function to be called for future use.
+    cb();
   };
 
-  return [isNewMessage, textArea, onTextAreaChange, toggleisNewMessage];
+  return [
+    isNewMessage,
+    textArea,
+    onTextAreaChange,
+    toggleisNewMessage,
+    onSaveButtonClicked,
+  ];
 };
