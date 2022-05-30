@@ -1,30 +1,22 @@
 import { Card } from "./Card";
 import { useState, useEffect } from "react";
 import { TextArea } from "./textArea";
-export function ContainerCards({
-  arrCards,
-  httpMethods,
-  isNewMessage,
-  newMessageTextArea,
-}) {
+import { AddNewCard } from "./AddNewCard";
+import { useCards } from "../Hooks/useCards";
+
+export function ContainerCards() {
+  const [arrCards, deleteAPost, updateAPost, addNewPost] = useCards();
+
   return (
     <div className="container">
-      {isNewMessage && (
-        <TextArea
-          textArea={newMessageTextArea.textArea}
-          onTextAreaChange={newMessageTextArea.onTextAreaChange}
-          /* ------------------------------------------------- */
-          onSaveButtonClicked={newMessageTextArea.onButtonClicked}
-          /* ------------------------------------------------- */
-        />
-      )}
+      <AddNewCard addNewPost={addNewPost} />
       {arrCards.map((element, index) => (
         <Card
           httpMethods={{
             deleteAPost: () => {
-              httpMethods.deleteAPost(element._id);
+              deleteAPost(element._id);
             },
-            updateAPost: httpMethods.updateAPost,
+            updateAPost: updateAPost,
             getId: () => element._id,
           }}
           key={index}
