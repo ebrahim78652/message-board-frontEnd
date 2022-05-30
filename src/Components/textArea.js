@@ -1,7 +1,7 @@
 import React from "react";
 import { ButtonSave } from "./ButtonSave";
 
-export function TextArea({ onTextAreaChange, textArea, onsaveButtonClicked }) {
+export function TextArea({ onTextAreaChange, textArea, OnsaveButtonClicked }) {
   return (
     <>
       <textarea
@@ -12,7 +12,7 @@ export function TextArea({ onTextAreaChange, textArea, onsaveButtonClicked }) {
         onChange={onTextAreaChange}
         value={textArea}
       ></textarea>
-      <ButtonSave OnsaveButtonClicked={onsaveButtonClicked} />
+      <ButtonSave OnsaveButtonClicked={OnsaveButtonClicked} />
     </>
   );
 }
