@@ -8,28 +8,22 @@ import { useState, useEffect } from "react";
 import React from "react";
 
 function App() {
-  const [arrCards, setArrCards, deleteAPost, updateAPost, addNewPost] =
-    useCards();
+  const [arrCards, deleteAPost, updateAPost, addNewPost] = useCards();
 
-  /* ------------------------------------------------- */
+  /* ----------------------------------------------- */
 
-  const [isNewMessage, setIsNewMessage] = useState(false);
+  const [isNewMessage, textArea, onTextAreaChange, toggleisNewMessage] =
+    useAddNewTextArea();
 
-  const toggleisNewMessage = () => {
-    setIsNewMessage((prevIsNewMessage) => !prevIsNewMessage);
-  };
-
-  const [textArea, setTextArea] = useState("");
-  const onTextAreaChange = (event) => {
-    console.log(event.target.value);
-    setTextArea(event.target.value);
-  };
   const onSaveButtonClicked = () => {
     console.log("On save button clicked");
     toggleisNewMessage();
-    addNewPost(textArea);
+    //below method coming from useAddNewTextArea()
     console.log(textArea);
+    //below method coming from useCards()
+    addNewPost(textArea);
   };
+
   /* ------------------------------------------------- */
 
   return (
