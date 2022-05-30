@@ -18,7 +18,7 @@ export const Card = ({ text, httpMethods }) => {
     setEditMode((prevEditMode) => !prevEditMode);
   };
 
-  const OnsaveButtonClicked = () => {
+  const onSaveButtonClicked = () => {
     console.log("On save button clicked");
     toggleEditMode();
     httpMethods.updateAPost(httpMethods.getId(), textArea);
@@ -26,24 +26,28 @@ export const Card = ({ text, httpMethods }) => {
   };
 
   return (
-    <div className="card">
-      {/*  <textarea name="" id="" cols="30" rows="10"></textarea> */}
+    <>
+      {!editMode && (
+        <div className="card">
+          {/*  <textarea name="" id="" cols="30" rows="10"></textarea> */}
 
-      {!editMode ? (
-        <>
-          <div className="message">{text}</div>
-          <ButtonsUpdateAndDelete
-            httpMethods={httpMethods}
-            toggleEditMode={toggleEditMode}
-          />
-        </>
-      ) : (
+          <>
+            <div className="message">{text}</div>
+            <ButtonsUpdateAndDelete
+              httpMethods={httpMethods}
+              toggleEditMode={toggleEditMode}
+            />
+          </>
+        </div>
+      )}
+
+      {editMode && (
         <TextArea
           onTextAreaChange={onTextAreaChange}
           textArea={textArea}
-          OnsaveButtonClicked={OnsaveButtonClicked}
+          onSaveButtonClicked={onSaveButtonClicked}
         />
       )}
-    </div>
+    </>
   );
 };
