@@ -18,12 +18,16 @@ h1{
   display: flex;
   gap: 2rem;
   margin-top: 1rem;
-  
+
+}
+
+.save:hover{
+  background-color: rgba(0, 0, 0, 0.253);
 }
 
 .new, .buttons *{
   background-color: rgba(0, 128, 0, 0.301);
-  
+  font-size: 1.5rem;
   border: 1px solid rgba(0, 0, 0, 0.384) ;
   border-radius: 1rem;
   padding: 0.5rem;
@@ -37,7 +41,9 @@ h1{
 /*CONTAINER */
 .container{
   display: flex;
-  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 2rem;
   
 }
 
@@ -48,4 +54,5 @@ h1{
   padding: 2rem;
   border: 1px solid rgba(0, 0, 0, 0.384) ;
   border-radius: 2rem;
+  margin: 2rem;
 }

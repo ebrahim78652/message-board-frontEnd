@@ -1,11 +1,14 @@
 import React from "react";
 
-export const ButtonsUpdateAndDelete = () => {
+export const ButtonsUpdateAndDelete = ({ httpMethods, toggleEditMode }) => {
   return (
     <div className="buttons">
-      <div className="update">Update</div>
-      <div className="delete">Delete</div>
-      <div className="delete">Edit</div>
+      <div onClick={httpMethods.deleteAPost} className="delete">
+        Delete
+      </div>
+      <div onClick={toggleEditMode} className="Edit">
+        Edit
+      </div>
     </div>
   );
 };
