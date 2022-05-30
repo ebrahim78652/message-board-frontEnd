@@ -3,7 +3,7 @@ import { ButtonSave } from "./ButtonSave";
 
 export function TextArea({ onTextAreaChange, textArea, onSaveButtonClicked }) {
   return (
-    <>
+    <div className="card">
       <textarea
         name=""
         id=""
@@ -13,6 +13,6 @@ export function TextArea({ onTextAreaChange, textArea, onSaveButtonClicked }) {
         value={textArea}
       ></textarea>
       <ButtonSave onSaveButtonClicked={onSaveButtonClicked} />
-    </>
+    </div>
   );
 }

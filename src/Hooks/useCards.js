@@ -89,5 +89,5 @@ export const useCards = () => {
     setArrCards([...arrCards, InfoCard(body[0].text, body[0]._id)]);
   };
 
-  return [arrCards, setArrCards, deleteAPost, updateAPost, addNewPost];
+  return [arrCards, deleteAPost, updateAPost, addNewPost];
 };
