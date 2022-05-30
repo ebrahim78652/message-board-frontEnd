@@ -69,9 +69,25 @@ export const useCards = () => {
   };
 
   const addNewPost = async (text) => {
-    console.log("save button clicked button clicked");
+    console.log("adding new post ");
+    console.log("the text is: " + text);
+
+    const response = await fetch(`http://localhost:3001/posts`, {
+      method: "POST",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        text: text,
+      }),
+    });
+
+    console.log(response);
+    const body = await response.json();
+    console.log(body);
+    setArrCards([...arrCards, InfoCard(body[0].text, body[0]._id)]);
   };
-  //i can also just export specific functions from this hook. form here the methods foe the put, get, post will be imported
 
   return [arrCards, setArrCards, deleteAPost, updateAPost, addNewPost];
 };

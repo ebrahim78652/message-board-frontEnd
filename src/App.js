@@ -11,15 +11,43 @@ function App() {
   const [arrCards, setArrCards, deleteAPost, updateAPost, addNewPost] =
     useCards();
 
+  /* ------------------------------------------------- */
+
+  const [isNewMessage, setIsNewMessage] = useState(false);
+
+  const toggleisNewMessage = () => {
+    setIsNewMessage((prevIsNewMessage) => !prevIsNewMessage);
+  };
+
+  const [textArea, setTextArea] = useState("");
+  const onTextAreaChange = (event) => {
+    console.log(event.target.value);
+    setTextArea(event.target.value);
+  };
+  const onSaveButtonClicked = () => {
+    console.log("On save button clicked");
+    toggleisNewMessage();
+    addNewPost(textArea);
+    console.log(textArea);
+  };
+  /* ------------------------------------------------- */
+
   return (
     <div className="App">
       <Header></Header>
-
-      <div className="new">New Message</div>
-
+      <div onClick={toggleisNewMessage} className="new">
+        New Message
+      </div>
       <ContainerCards
         arrCards={arrCards}
         httpMethods={{ deleteAPost, updateAPost }}
+        isNewMessage={isNewMessage}
+        className="new"
+        newMessageTextArea={{
+          textArea,
+          onTextAreaChange,
+          onSaveButtonClicked,
+        }}
       />
     </div>
   );
